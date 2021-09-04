@@ -1,0 +1,1091 @@
+/* CSS Custom Properties for Theming */
+:root {
+  --primary-color: #3d4449;
+  --secondary-color: #7f888f;
+  --accent-color: #f56a6a;
+  --background-color: #ffffff;
+  --surface-color: #f5f5f5;
+  --text-color: #3d4449;
+  --text-light: #7f888f;
+  --border-color: #e0e0e0;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --border-radius: 8px;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Apply theme variables to body and all elements */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: var(--transition);
+}
+
+/* Enhanced Hover Effects and Animations */
+.box-image {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transform: translate(-50%, -50%);
+}
+
+/* Enhanced button hover effects */
+.button, .article .button {
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.button:hover, .article .button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(245, 106, 106, 0.3);
+}
+
+.button::after, .article .button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.button:hover::after, .article .button:hover::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
+/* Enhanced image hover effects */
+.article .image img {
+  transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+  filter: brightness(0.95);
+}
+
+.article .image img:hover {
+  transform: scale(1.05) rotate(1deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.05);
+}
+
+/* Enhanced timeline item hover */
+.box-content {
+  transition: var(--transition);
+}
+
+.box-content:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-left: 4px solid var(--accent-color);
+}
+
+/* Enhanced Social icons */
+.icons li a {
+  transition: var(--transition);
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+}
+
+.icons li a:hover {
+  transform: translateY(-5px) scale(1.1);
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+  box-shadow: 0 5px 15px rgba(245, 106, 106, 0.3);
+}
+
+/* Specific icon colors on hover */
+.icons li a[class*="fa-linkedin"]:hover {
+  background: #0077b5;
+  border-color: #0077b5;
+}
+
+.icons li a[class*="fa-github"]:hover {
+  background: #333;
+  border-color: #333;
+}
+
+/* Contact list item hover */
+.contact li {
+  transition: var(--transition);
+  padding-left: 5px;
+}
+
+.contact li:hover {
+  transform: translateX(10px);
+  padding-left: 15px;
+  border-left: 3px solid var(--accent-color);
+}
+
+/* Fade-in animation for page elements */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#banner, .timeline .container, .article {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.timeline .container:nth-child(2) { animation-delay: 0.1s; }
+.timeline .container:nth-child(3) { animation-delay: 0.2s; }
+.timeline .container:nth-child(4) { animation-delay: 0.3s; }
+.timeline .container:nth-child(5) { animation-delay: 0.4s; }
+.timeline .container:nth-child(6) { animation-delay: 0.5s; }
+
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: lightgrey;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+/* Container around content */
+.container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+/* The circles on the timeline */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: lightgrey;
+  border: 4px solid #FF9F55;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the container to the left */
+.left {
+  left: 0;
+}
+
+/* Place the container to the right */
+.right {
+  left: 50%;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: lightgrey;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent lightgrey;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid lightgrey;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent lightgrey transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+  left: -16px;
+}
+
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+/* Place the timelime to the left */
+  .timeline::after {
+    left: 31px;
+  }
+
+/* Full-width containers */
+  .container {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+/* Make sure all circles are at the same spot */
+  .left::after, .right::after {
+    left: 15px;
+  }
+
+/* Make all right containers behave like the left ones */
+  .right {
+    left: 0%;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+#banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#banner .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+  margin: 50px 0;
+}
+
+#banner h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #222;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+#banner p {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#banner .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#banner img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.posts {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.article {
+  width: 48%;
+  margin-bottom: 2%;
+  padding: 2%;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+}
+
+.article img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1.5em;
+}
+
+.article h3 {
+  font-size: 1.3em;
+  margin-bottom: 1em;
+}
+
+.article p {
+  font-size: 1em;
+  line-height: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.article ul.actions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.article ul.actions li {
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
+.article ul.actions li:last-child {
+  margin-right: 0;
+}
+
+.article .button {
+  display: inline-block;
+  padding: 0.75em 1.25em;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.article .button:hover {
+  background-color: #555;
+  transform: translateY(-2px);
+}
+
+/* Banner improvements */
+#banner .subtitle {
+  font-size: 1.5em;
+  color: #7f888f;
+  margin-bottom: 1em;
+  font-weight: 600;
+}
+
+#banner p {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+/* Image hover effects */
+.article .image img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article .image img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Work experience box improvements */
+.box-content {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 1.5em;
+  border-radius: 8px;
+}
+
+.box-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Responsive improvements */
+@media screen and (max-width: 768px) {
+  #banner {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  #banner .content {
+    margin-bottom: 2em;
+  }
+  
+  .container {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+  
+  .container::before {
+    left: 60px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent lightgrey transparent transparent;
+  }
+  
+  .left::after, .right::after {
+    left: 15px;
+  }
+  
+  .right {
+    left: 0%;
+  }
+}
+
+/* Enhanced Contact section */
+.contact-intro {
+  color: var(--text-light);
+  margin-bottom: var(--spacing-lg);
+  font-style: italic;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+.contact li {
+  margin-bottom: var(--spacing-md);
+  transition: var(--transition);
+  padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) calc(var(--spacing-sm) + 24px);
+  border-radius: var(--border-radius);
+  border-left: 3px solid transparent;
+  position: relative;
+  min-height: 40px;
+}
+
+.contact li:hover {
+  transform: translateX(8px);
+  background: var(--surface-color);
+  border-left: 3px solid var(--accent-color);
+  padding-left: calc(var(--spacing-sm) + 32px);
+}
+
+.contact li .icon {
+  position: absolute;
+  left: var(--spacing-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  text-align: center;
+  color: var(--accent-color);
+  font-size: 1.1em;
+}
+
+.contact a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 500;
+  flex: 1;
+}
+
+.contact a:hover {
+  color: var(--accent-color);
+}
+
+/* Specific contact item styles */
+.contact li.icon-solid.fa-file a {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.contact li.icon-solid.fa-envelope a {
+  color: #d44638; /* Gmail red */
+}
+
+.contact li.icon-solid.fa-phone {
+  color: var(--text-color);
+}
+
+.contact li.icon-solid.fa-home {
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* Print styles */
+@media print {
+  .icons, .button {
+    display: none !important;
+  }
+  
+  .contact-intro, .contact li:last-child {
+    display: none !important;
+  }
+}
+
+/* Typewriter Effect */
+.typewriter {
+  position: relative;
+  display: inline-block;
+}
+
+.typewriter-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid var(--accent-color);
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Compact Experience Grid */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.experience-card {
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  border-color: var(--accent-color);
+}
+
+.experience-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+}
+
+.company-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.experience-title {
+  flex: 1;
+  min-width: 0; /* Prevents text overflow issues */
+}
+
+.experience-title h3 {
+  margin: 0 0 0.3rem 0;
+  font-size: 1.15em;
+  color: var(--primary-color);
+  line-height: 1.3;
+  word-wrap: break-word;
+}
+
+.company {
+  margin: 0 0 0.3rem 0;
+  font-size: 1em;
+  color: var(--accent-color);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.duration {
+  margin: 0;
+  font-size: 0.9em;
+  color: var(--text-light);
+  font-style: italic;
+  line-height: 1.2;
+}
+
+/* Highlight current position */
+.experience-card:first-child .duration {
+  color: var(--accent-color);
+  font-weight: 600;
+  font-style: normal;
+}
+
+.experience-card:first-child .duration::after {
+  content: " • Current";
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+/* Improve experience header alignment */
+.experience-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  min-height: 70px; /* Ensure consistent height */
+}
+
+/* Smooth scrolling for the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Project Card Styles */
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card .experience-title h3 {
+  font-size: 1.2em;
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+}
+
+.project-card .company {
+  font-size: 1em;
+  margin-bottom: 0.3rem;
+}
+
+.project-card .duration {
+  font-size: 0.9em;
+  color: var(--text-light);
+  font-style: normal;
+}
+
+.project-description {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+}
+
+.project-description p {
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: 0.95em;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+/* Tech stack styling for project section */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: var(--spacing-sm) 0 var(--spacing-md) 0;
+}
+
+.tech-tag {
+  background: var(--surface-color);
+  color: var(--text-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8em;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.tech-tag:hover {
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.button.small {
+  padding: 0.7rem 1.6rem;
+  font-size: 0.95em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--spacing-md);
+  background: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: var(--transition);
+  font-weight: 600;
+  border: 2px solid var(--primary-color);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  text-align: center;
+}
+
+.button.small::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.7s ease;
+}
+
+.button.small:hover {
+  background: #d64545; /* Darker shade of accent color for better contrast */
+  border-color: #d64545;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(214, 69, 69, 0.25);
+}
+
+.button.small:hover::before {
+  left: 100%;
+}
+
+.button.small:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(214, 69, 69, 0.2);
+}
+
+/* Arrow icon */
+.button.small::after {
+  content: '→';
+  margin-left: 0.5rem;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+  opacity: 0.9;
+}
+
+.button.small:hover::after {
+  transform: translateX(3px);
+  opacity: 1;
+}
+
+/* Remove hover color change and animations for View Project button */
+.project-description .button.small::before,
+.project-description .button.small::after {
+  display: none;
+}
+
+.project-description .button.small:hover,
+.project-description .button.small:active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Timeline enhancement for experience cards */
+.experience-card {
+  position: relative;
+  padding-left: calc(var(--spacing-md) + 8px);
+}
+
+.experience-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: var(--spacing-md);
+  bottom: var(--spacing-md);
+  width: 3px;
+  background: var(--accent-color);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+.experience-card:first-child::before {
+  top: var(--spacing-md);
+}
+
+.experience-card:last-child::before {
+  bottom: calc(100% - var(--spacing-md));
+}
+
+.experience-card::after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: calc(var(--spacing-md) + 12px);
+  width: 11px;
+  height: 11px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  border: 2px solid var(--background-color);
+  box-shadow: 0 0 0 2px var(--accent-color);
+}
+
+/* Remove timeline markers on mobile for cleaner look */
+@media (max-width: 768px) {
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .company-logo {
+    width: 50px;
+    height: 50px;
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .experience-card {
+    padding-left: var(--spacing-md);
+  }
+  
+  .experience-card::before,
+  .experience-card::after {
+    display: none;
+  }
+}
+
+/* Timeline Flow Design - Experimental timeline for better chronological flow */
+.timeline-flow {
+  position: relative;
+  margin: var(--spacing-xl) 0;
+  padding-left: 140px; /* Space for dates on the left */
+}
+
+.timeline-flow::before {
+  content: '';
+  position: absolute;
+  left: 120px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--accent-color), var(--primary-color));
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  align-items: flex-start;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-date {
+  position: absolute;
+  left: -140px;
+  top: 0;
+  width: 120px;
+  text-align: right;
+  padding-right: var(--spacing-md);
+  font-weight: 600;
+  color: var(--accent-color);
+  font-size: 0.9em;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.timeline-content {
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  flex: 1;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  border-color: var(--accent-color);
+}
+
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 20px;
+  width: 12px;
+  height: 12px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  border: 3px solid var(--background-color);
+  box-shadow: 0 0 0 2px var(--accent-color);
+  z-index: 2;
+}
+
+.timeline-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  float: left;
+  margin-right: var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
+  border: 2px solid var(--border-color);
+}
+
+.timeline-details {
+  overflow: hidden; /* Clear float */
+}
+
+.timeline-details h3 {
+  margin: 0 0 0.3rem 0;
+  font-size: 1.15em;
+  color: var(--primary-color);
+  line-height: 1.3;
+}
+
+.timeline-company {
+  margin: 0 0 0.3rem 0;
+  font-size: 1em;
+  color: var(--accent-color);
+  font-weight: 600;
+  display: block;
+}
+
+.timeline-description {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.95em;
+  line-height: 1.5;
+  color: var(--text-color);
+  display: block;
+}
+
+/* Responsive adjustments for timeline */
+@media (max-width: 768px) {
+  .timeline-flow {
+    padding-left: 0;
+    margin-left: 0;
+  }
+  
+  .timeline-flow::before {
+    left: 20px;
+  }
+  
+  .timeline-date {
+    position: static;
+    width: auto;
+    text-align: left;
+    padding-right: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    font-size: 1em;
+  }
+  
+  .timeline-content {
+    margin-left: 40px;
+  }
+  
+  .timeline-content::before {
+    left: -30px;
+  }
+  
+  .timeline-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-content {
+    margin-left: 30px;
+    padding: var(--spacing-sm);
+  }
+  
+  .timeline-content::before {
+    left: -25px;
+    width: 10px;
+    height: 10px;
+  }
+  
+  .timeline-logo {
+    width: 35px;
+    height: 35px;
+    float: none;
+    display: block;
+    margin: 0 0 var(--spacing-xs) 0;
+  }
+}
+
+/* Skills Section Styles */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.skill-category {
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.skill-category:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+  border-color: var(--accent-color);
+}
+
+.skill-category h3 {
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: 1.1em;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 0.5rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  background: var(--accent-color);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 500;
+  transition: var(--transition);
+  display: inline-block;
+}
+
+.skill-tag:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(245, 106, 106, 0.3);
+}
+
+/* Responsive adjustments for skills */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
