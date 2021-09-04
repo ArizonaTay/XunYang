@@ -2274,7 +2274,9 @@ button,
 
 
 ###################################################################
-
+* {
+  box-sizing: border-box;
+}
 
 
 /* The actual timeline (the vertical ruler) */
@@ -2300,7 +2302,7 @@ button,
 .container {
   padding: 10px 40px;
   position: relative;
-  background-color: white;
+  background-color: inherit;
   width: 50%;
 }
 
