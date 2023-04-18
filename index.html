@@ -130,8 +130,127 @@
 								<section>
 									<hr class="major" />
 									<div class="center">
-									<h2>My Experience</h2>
+									<h2>Education and Work Experience</h2>
 									</div>
+									<style>
+										.timeline {
+										  position: relative;
+										  padding: 20px 0;
+										  margin: 0 auto;
+										  max-width: 1200px;
+										}
+										.timeline::before {
+										  content: "";
+										  position: absolute;
+										  top: 0;
+										  left: 50%;
+										  margin-left: -3px;
+										  width: 6px;
+										  height: 100%;
+										  background-color: #ccc;
+										}
+										.timeline-item {
+										  position: relative;
+										  margin: 10px 0;
+										}
+										.timeline-item::before {
+										  content: "";
+										  position: absolute;
+										  top: 5px;
+										  left: 50%;
+										  margin-left: -7.5px;
+										  width: 15px;
+										  height: 15px;
+										  border-radius: 50%;
+										  background-color: white;
+										  border: 2px solid #ccc;
+										}
+										.timeline-item::after {
+										  content: "";
+										  position: absolute;
+										  top: 27px;
+										  left: 50%;
+										  margin-left: -3px;
+										  width: 6px;
+										  height: 100%;
+										  background-color: #ccc;
+										}
+										.timeline-item:last-child::after {
+										  display: none;
+										}
+										.timeline-item-content {
+										  position: relative;
+										  top: -10px;
+										  left: 25%;
+										  width: 50%;
+										  padding: 10px;
+										  background-color: white;
+										  border-radius: 6px;
+										  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+										}
+										.timeline-item-content h2 {
+										  margin-top: 0;
+										}
+										.timeline-item-content p {
+										  margin: 0;
+										}
+										@media screen and (max-width: 600px) {
+										  .timeline::before {
+											left: 20px;
+										  }
+										  .timeline-item::before {
+											left: 15px;
+										  }
+										  .timeline-item::after {
+											left: 13px;
+										  }
+										  .timeline-item-content {
+											left: 0;
+											width: 100%;
+											padding: 20px;
+											text-align: center;
+										  }
+										}
+									  </style>
+										<div class="timeline">
+											<div class="timeline-item">
+											  <div class="timeline-item-content">
+												<h2>Master's Degree in Computer Science</h2>
+												<p>University of California, Los Angeles</p>
+												<p>2018-2020</p>
+											  </div>
+											</div>
+											<div class="timeline-item">
+											  <div class="timeline-item-content">
+												<h2>Bachelor's Degree in Computer Engineering</h2>
+												<p>University of Southern California</p>
+												<p>2014-2018</p>
+											  </div>
+											</div>
+											<div class="timeline-item">
+											  <div class="timeline-item-content">
+												<h2>Software Engineer</h2>
+												<p>Google</p>
+												<p>2020-Present</p>
+											  </div>
+											</div>
+											<div class="timeline-item">
+											  <div class="timeline-item-content">
+												<h2>Software Engineering Intern</h2>
+												<p>Facebook</p>
+												<p>Summer 2019</p>
+											</div>
+										</div>
+										<div class="timeline-item">
+										  <div class="timeline-item-content">
+											<h2>Engineering Intern</h2>
+											<p>Microsoft</p>
+											<p>Summer 2017</p>
+										  </div>
+										</div>
+									  </div>
+
+
 									<div class="timeline">
 									  <div class="container left">
 									    <div class="box">
